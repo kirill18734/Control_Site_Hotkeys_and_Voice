@@ -16,7 +16,7 @@ hotkeys_for_programm = {
 }
 
 remote_debugging_port = 9999
-
+#
 discriptor_windows = []
 discriptor_windows_2 = []
 
