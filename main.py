@@ -1,6 +1,6 @@
 from Boxberry.comands import *
 from Ozon.comands import *
-
+# Это
 while True:
     action = check_hotkeys()
     # OZON

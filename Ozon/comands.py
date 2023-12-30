@@ -23,7 +23,7 @@ class Ozon:
     def open_site_Ozon(self):
         self.driver.switch_to.window(self.vars[0])
         self.driver.get(url_Ozon)
-        self.wait(*open_site_Ozon).click()
+        # self.wait(*open_site_Ozon).click()
 
     # "Выдача заказов"
 
