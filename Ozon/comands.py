@@ -14,7 +14,6 @@ class Ozon:
     def wait(self, By, value):
         wait = WebDriverWait(self.driver, 10)
         return wait.until(EC.presence_of_element_located((By, value)))
-
     def close_driver(self):
         self.driver.close()
         self.driver.quit()
@@ -26,48 +25,51 @@ class Ozon:
         self.wait(*open_site_Ozon).click()
 
     # "Выдача заказов"
-
     def issuing_orders(self):
         self.driver.switch_to.window(self.vars[0])
         self.wait(*open_site_Ozon).click()
+    # закрывает активную карточку клиента ------------------
+    def close_the_active_customer_card(self):
+        pass
+    # закрывает все карточки закаказов -------------------------
+    def close_all_order_cards(self):
+        pass
 
-        # "Прием отправлений "
-
+    # "Прием отправлений"
     def receiving_shipments(self):
         self.driver.switch_to.window(self.vars[0])
         self.wait(*receiving_shipments).click()
-
-        # Прием отправлений - ставит или убирает галочку
-
+    # Прием отправлений - ставит или убирает галочку
     def receiving_shipments_click(self):
         self.driver.switch_to.window(self.vars[0])
         # Прием отправлений - уберает галочку
         self.wait(*receiving_shipments_cancel).click()
-
-    # Прием отправлений - ставит номер
+    # Прием отправлений - ставит номер -----------------------------------------------
     def receiving_shipments_click_number(self):
         self.driver.switch_to.window(self.vars[0])
         # Прием отправлений - уберает галочку
         self.wait(*receiving_shipments_cancel).click()
-        # Прием отправлений - кликает на кнопку с номером
-        self.wait(*receiving_shipments_cancel_number_1).click()
-        # Прием отправлений - кликает на поиск
-        self.wait(*receiving_shipments_cancel_number_2).click()
-        # Прием отправлений - выбирает номер
-        self.wait(*receiving_shipments_cancel_number_3).click()
-        # Прием отправлений - кликает на кнопку с номером
-        self.wait(*receiving_shipments_cancel_number_4)
-
-        # "Отправка на склад" - тарные ящики
-
-    def shipping_to_the_warehouse(self):
-        self.driver.switch_to.window(self.vars[0])
-        self.wait(*shipping_to_the_warehouse).click()
-        element_to_double_click = self.wait(*shipping_to_the_warehouse_trash)
-        ActionChains(self.driver).double_click(element_to_double_click).perform()
-
+        # # Прием отправлений - кликает на кнопку с номером
+        #         # self.wait(*receiving_shipments_cancel_number_1).click()
+        #         # # Прием отправлений - кликает на поиск
+        #         # self.wait(*receiving_shipments_cancel_number_2).click()
+        #         # # Прием отправлений - выбирает номер
+        #         # self.wait(*receiving_shipments_cancel_number_3).click()
+        #         # # Прием отправлений - кликает на кнопку с номером
+        #         # self.wait(*receiving_shipments_cancel_number_4)
         # Отправка на склад - создание 2 перевозок для возвратов и для селлеров
 
+    # Отправка на склад - перевозки
+    def sending_to_the_transportation_warehouse(self):
+        self.driver.switch_to.window(self.vars[0])
+        # Отправка на склад
+        self.wait(*shipping_to_the_warehouse).click()
+
+        # Отправка на склад - перевозки
+        element_to_double_click = self.wait(*shipping_to_the_warehouse_transportation)
+        ActionChains(self.driver).double_click(element_to_double_click).perform()
+
+    # создает 2 перевозки для возвратов и для селлеров
     def shipping_to_the_warehouse_transportation(self):
         self.driver.switch_to.window(self.vars[0])
         # Отправка на склад
@@ -103,9 +105,20 @@ class Ozon:
 
         # Отправка на склад - перевозки - новая перевозка - маршрут - селлер - создать
         self.wait(*shipping_to_the_warehouse_transportation_create_transportation_route_return_create).click()
+    # Отправка на слкда - коробки
+    def boxes(self):
+        self.driver.switch_to.window(self.vars[0])
+        self.wait(*shipping_to_the_warehouse).click()
+        element_to_double_click = self.wait(*boxesshipping_to_the_warehouse_of_the_box)
+        ActionChains(self.driver).double_click(element_to_double_click).perform()
+    # "Отправка на склад" - тарные ящики
+    def shipping_to_the_warehouse(self):
+        self.driver.switch_to.window(self.vars[0])
+        self.wait(*shipping_to_the_warehouse).click()
+        element_to_double_click = self.wait(*shipping_to_the_warehouse_trash)
+        ActionChains(self.driver).double_click(element_to_double_click).perform()
 
-        # "Поиск отправлений"
-
+    # "Поиск отправлений"
     def search_for_shipments(self):
         self.driver.switch_to.window(self.vars[0])
         self.wait(*search_for_shipments).click()

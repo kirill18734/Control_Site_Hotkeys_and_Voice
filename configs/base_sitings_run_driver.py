@@ -24,9 +24,7 @@ class Top_driver:
         return wait.until(EC.presence_of_element_located((By, value)))
 
     # закрывает браузер и завершает работу программы
-    def close_driver(self):
-        self.driver.close()
-        self.driver.quit()
+
 
 def check_hotkeys():
     hotkeys = {**hotkey_Ozon, **hotkey_Boxberry, **hotkeys_for_programm}
@@ -36,3 +34,4 @@ def check_hotkeys():
             if keyboard.is_pressed(hotkey):
                 sleep(1)
                 return action
+
