@@ -4,8 +4,8 @@ url_Ozon = 'https://pvz.ozon-dostavka.ru/'
 # Горячие клавиши для Озона
 hotkey_Ozon = {
 
-    # открывает сайт boxberry и Озон (отдельное окно)
-    'open_site_Ozon': 'alt + k',
+
+
 
     # Выдача заказов
     'issuing_orders': 'alt + l',
